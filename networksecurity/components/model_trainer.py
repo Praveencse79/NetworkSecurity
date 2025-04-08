@@ -46,7 +46,7 @@ class ModelTrainer:
             raise NetworkSecurityException(e,sys)
         
     def track_mlflow(self,best_model,classificationmetric):
-        mlflow.set_registry_uri("https://dagshub.com/krishnaik06/networksecurity.mlflow")
+        mlflow.set_registry_uri("https://dagshub.com/Praveencse79/NetworkSecurity.mlflow")
         tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
         with mlflow.start_run():
             f1_score=classificationmetric.f1_score
@@ -111,7 +111,10 @@ class ModelTrainer:
                                           models=models,param=params)
         
         ## To get best model score from dict
-        best_model_score = max(sorted(model_report.values()))
+        #best_model_score = max(sorted(model_report.values()))
+        best_model_score = max(sorted([float(score) for score in model_report.values()]))
+
+
 
         ## To get best model name from dict
 
