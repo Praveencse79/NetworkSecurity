@@ -95,7 +95,7 @@ class TrainingPipeline:
         except Exception as e:
             raise NetworkSecurityException(e,sys)
         
-    ## local final model is going to s3 bucket 
+    ## local final model is going to s3 bucket os.environ["MLFLOW_S3_ENDPOINT_URL"] = "https://s3.amazonaws.com"
         
     def sync_saved_model_dir_to_s3(self):
         try:
